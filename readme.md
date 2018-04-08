@@ -1,6 +1,7 @@
 ### Blogging platform - backend
 
 ##### Description
+- project, to be used on workshops during _Itera Dev Academy_
 - spring boot application, providing API for `blogging-platform` frontend
 - available at `http://localhost:8080`
 - packaged into runnable jar
