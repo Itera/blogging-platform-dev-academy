@@ -5,7 +5,7 @@
 
 	<groupId>no.itera</groupId>
 	<artifactId>blogging-platform</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>blogging-platform</name>
