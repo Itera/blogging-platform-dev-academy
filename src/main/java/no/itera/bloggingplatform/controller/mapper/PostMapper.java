@@ -1,5 +1,8 @@
 package no.itera.bloggingplatform.controller.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import no.itera.bloggingplatform.controller.dto.ImmutablePostDto;
 import no.itera.bloggingplatform.controller.dto.PostDto;
 import no.itera.bloggingplatform.model.Post;
@@ -19,6 +22,12 @@ public final class PostMapper {
         .date(post.getDate())
         .categories(CategoryMapper.mapListToApi(post.getCategories()))
         .build();
+  }
+
+  public static List<PostDto> mapListToApi(List<Post> post) {
+    return post.stream()
+        .map(PostMapper::mapToApi)
+        .collect(Collectors.toList());
   }
 
   public static Post mapToDomain(PostDto postDto) {
