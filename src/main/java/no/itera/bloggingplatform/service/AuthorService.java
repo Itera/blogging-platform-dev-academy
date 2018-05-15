@@ -16,4 +16,5 @@ public interface AuthorService {
 
     Author deleteAuthor(Long authorId);
 
+    boolean exists(Author author);
 }
