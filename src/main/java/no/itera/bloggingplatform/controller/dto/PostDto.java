@@ -6,6 +6,11 @@ import java.util.List;
 import org.immutables.value.Value;
 import org.springframework.lang.Nullable;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize(as = ImmutablePostDto.class)
+@JsonDeserialize(as = ImmutablePostDto.class)
 @Value.Immutable
 public interface PostDto {
 
