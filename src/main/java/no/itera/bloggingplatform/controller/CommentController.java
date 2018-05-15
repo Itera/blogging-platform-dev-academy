@@ -11,6 +11,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import no.itera.bloggingplatform.controller.dto.CommentDto;
 import no.itera.bloggingplatform.controller.mapper.CommentMapper;
 import no.itera.bloggingplatform.service.CommentService;
@@ -46,7 +48,7 @@ public class CommentController {
   @ResponseStatus(HttpStatus.CREATED)
   public CommentDto createCommentForPost(
       @PathVariable Long postId,
-      @RequestBody CommentDto comment
+      @Valid @RequestBody CommentDto comment
   ) {
     return mapToApi(
         commentService.createCommentForPostId(postId, mapToDomain(comment))

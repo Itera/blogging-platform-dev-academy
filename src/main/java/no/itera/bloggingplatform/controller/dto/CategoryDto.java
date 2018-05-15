@@ -1,5 +1,7 @@
 package no.itera.bloggingplatform.controller.dto;
 
+import javax.validation.constraints.Size;
+
 import org.immutables.value.Value;
 import org.springframework.lang.Nullable;
 
@@ -15,6 +17,7 @@ public interface CategoryDto {
   @Value.Parameter
   Long getId();
 
+  @Size(min = 3, max = 20)
   @Value.Parameter
   String getName();
 }
