@@ -44,4 +44,8 @@ public class AuthorServiceImpl implements AuthorService {
         return authorRepository.delete(authorId);
     }
 
+    @Override
+    public boolean exists(Author author) {
+        return authorRepository.exists(author.getKey());
+    }
 }
