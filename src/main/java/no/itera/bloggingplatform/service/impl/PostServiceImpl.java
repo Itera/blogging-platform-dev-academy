@@ -3,6 +3,7 @@ package no.itera.bloggingplatform.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import no.itera.bloggingplatform.exception.ResourceNotFoundException;
 import no.itera.bloggingplatform.model.Author;
 import no.itera.bloggingplatform.model.Category;
 import no.itera.bloggingplatform.model.Post;
@@ -59,6 +60,9 @@ public class PostServiceImpl implements PostService {
 
   @Override
   public List<Post> findByAuthor(Long authorId) {
+    if (authorService.findAuthorById(authorId) == null) {
+      throw new ResourceNotFoundException(Author.class, authorId);
+    }
     return postRepository.findByAuthor(authorId);
   }
 
