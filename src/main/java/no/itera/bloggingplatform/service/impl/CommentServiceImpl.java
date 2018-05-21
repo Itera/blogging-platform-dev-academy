@@ -5,10 +5,12 @@ import no.itera.bloggingplatform.repository.CommentRepository;
 import no.itera.bloggingplatform.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class CommentServiceImpl implements CommentService {
 
     private CommentRepository commentRepository;
