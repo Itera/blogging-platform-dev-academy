@@ -1,17 +1,25 @@
 package no.itera.bloggingplatform.model;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Post implements Persistable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private Date date;
     private String perex;
     private String content;
+    @OneToOne
+    @JoinColumn
     private Author author;
+    @OneToMany
+    @JoinColumn
     private List<Category> categories;
 
     @Override

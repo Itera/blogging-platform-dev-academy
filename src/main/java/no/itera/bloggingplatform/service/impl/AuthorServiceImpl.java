@@ -4,11 +4,13 @@ import no.itera.bloggingplatform.model.Author;
 import no.itera.bloggingplatform.repository.AuthorRepository;
 import no.itera.bloggingplatform.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Primary
 public class AuthorServiceImpl implements AuthorService {
 
     private AuthorRepository authorRepository;
