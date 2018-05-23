@@ -1,11 +1,16 @@
 package no.itera.bloggingplatform.model;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class Comment implements Persistable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Temporal(TemporalType.TIME)
     private Date date;
     private String authorName;
     private String content;
