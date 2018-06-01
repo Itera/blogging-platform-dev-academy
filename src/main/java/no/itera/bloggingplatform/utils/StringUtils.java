@@ -4,10 +4,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public final class StringUtils {
 
-    private static final String EMPTY_STRING = "";
     private static final String DEFAULT_SEPARATOR = ",";
 
     private StringUtils() {
@@ -22,7 +22,6 @@ public final class StringUtils {
 
         return Optional.ofNullable(elements).orElse(Collections.emptyList()).stream()
                 .filter(Objects::nonNull)
-                .reduce((left, right) -> left + sep + right)
-                .orElse(EMPTY_STRING);
+                .collect(Collectors.joining(sep));
     }
 }
