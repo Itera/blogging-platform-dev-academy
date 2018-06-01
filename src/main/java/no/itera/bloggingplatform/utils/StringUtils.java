@@ -1,10 +1,11 @@
 package no.itera.bloggingplatform.utils;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Collectors;
+
+import static java.util.Collections.emptyList;
+import static java.util.Optional.ofNullable;
+import static java.util.stream.Collectors.joining;
 
 public final class StringUtils {
 
@@ -18,10 +19,10 @@ public final class StringUtils {
      * by using separator between elements.
      */
     public static String join(Collection<String> elements, String separator) {
-        String sep = Optional.ofNullable(separator).orElse(DEFAULT_SEPARATOR);
+        String sep = ofNullable(separator).orElse(DEFAULT_SEPARATOR);
 
-        return Optional.ofNullable(elements).orElse(Collections.emptyList()).stream()
+        return ofNullable(elements).orElse(emptyList()).stream()
                 .filter(Objects::nonNull)
-                .collect(Collectors.joining(sep));
+                .collect(joining(sep));
     }
 }
