@@ -5,6 +5,7 @@ import java.util.Collection;
 public final class StringUtils {
 
     private static final String EMPTY_STRING = "";
+    private static final String DEFAULT_SEPARATOR = ",";
 
     private StringUtils() {
     }
@@ -18,11 +19,13 @@ public final class StringUtils {
             return EMPTY_STRING;
         }
 
+        String sep = separator == null ? DEFAULT_SEPARATOR : separator;
+
         StringBuilder sb = new StringBuilder();
 
         for (String element : elements) {
             if (element != null) {
-                sb.append(element).append(separator);
+                sb.append(element).append(sep);
             }
         }
 

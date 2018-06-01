@@ -57,4 +57,13 @@ public class StringUtilsTest {
 
         assertEquals("first,third", actual);
     }
+
+    @Test
+    public void shouldJoinWhenSeparatorIsNull() {
+        List<String> elements = Arrays.asList("first", "second", "third");
+
+        String actual = StringUtils.join(elements, null);
+
+        assertEquals("first,second,third", actual);
+    }
 }
