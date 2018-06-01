@@ -21,7 +21,9 @@ public final class StringUtils {
         StringBuilder sb = new StringBuilder();
 
         for (String element : elements) {
-            sb.append(element).append(separator);
+            if (element != null) {
+                sb.append(element).append(separator);
+            }
         }
 
         if (!elements.isEmpty()) {

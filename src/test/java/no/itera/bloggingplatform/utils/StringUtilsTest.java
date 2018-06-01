@@ -48,4 +48,13 @@ public class StringUtilsTest {
 
         assertEquals("", actual);
     }
+
+    @Test
+    public void shouldOmitNullElements() {
+        List<String> elements = Arrays.asList("first", null, "third");
+
+        String actual = StringUtils.join(elements, ",");
+
+        assertEquals("first,third", actual);
+    }
 }
