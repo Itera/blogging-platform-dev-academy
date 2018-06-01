@@ -4,6 +4,8 @@ import java.util.Collection;
 
 public final class StringUtils {
 
+    private static final String EMPTY_STRING = "";
+
     private StringUtils() {
     }
 
@@ -12,6 +14,10 @@ public final class StringUtils {
      * by using separator between elements.
      */
     public static String join(Collection<String> elements, String separator) {
+        if (elements == null) {
+            return EMPTY_STRING;
+        }
+
         StringBuilder sb = new StringBuilder();
 
         for (String element : elements) {

@@ -39,4 +39,13 @@ public class StringUtilsTest {
 
         assertEquals("", actual);
     }
+
+    @Test
+    public void shouldReturnEmptyStringWhenElementsAreNull() {
+        List<String> elements = null;
+
+        String actual = StringUtils.join(elements, ",");
+
+        assertEquals("", actual);
+    }
 }
