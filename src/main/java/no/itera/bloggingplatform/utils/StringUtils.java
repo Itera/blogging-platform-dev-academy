@@ -18,7 +18,9 @@ public final class StringUtils {
             sb.append(element).append(separator);
         }
 
-        sb.deleteCharAt(sb.length() - 1);
+        if (!elements.isEmpty()) {
+            sb.deleteCharAt(sb.length() - 1);
+        }
 
         return sb.toString();
     }

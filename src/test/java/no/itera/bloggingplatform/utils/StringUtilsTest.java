@@ -2,6 +2,7 @@ package no.itera.bloggingplatform.utils;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,5 +29,14 @@ public class StringUtilsTest {
         String actual = StringUtils.join(elements, ",");
 
         assertEquals("first", actual);
+    }
+
+    @Test
+    public void shouldJoinZeroWords() {
+        List<String> elements = new ArrayList<>();
+
+        String actual = StringUtils.join(elements, ",");
+
+        assertEquals("", actual);
     }
 }
