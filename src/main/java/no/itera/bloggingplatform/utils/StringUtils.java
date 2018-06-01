@@ -30,7 +30,7 @@ public final class StringUtils {
         }
 
         if (!elements.isEmpty()) {
-            sb.deleteCharAt(sb.length() - 1);
+            sb.delete(sb.length() - sep.length(), sb.length());
         }
 
         return sb.toString();

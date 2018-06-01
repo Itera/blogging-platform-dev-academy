@@ -66,4 +66,13 @@ public class StringUtilsTest {
 
         assertEquals("first,second,third", actual);
     }
+
+    @Test
+    public void shouldJoinWhenSeparatorIsMultiChar() {
+        List<String> elements = Arrays.asList("first", "second", "third");
+
+        String actual = StringUtils.join(elements, "--");
+
+        assertEquals("first--second--third", actual);
+    }
 }
