@@ -1,0 +1,47 @@
+package no.itera.bloggingplatform.service.impl;
+
+import no.itera.bloggingplatform.model.Author;
+import no.itera.bloggingplatform.repository.AuthorRepository;
+import no.itera.bloggingplatform.service.AuthorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class AuthorServiceImpl implements AuthorService {
+
+    private AuthorRepository authorRepository;
+
+    @Autowired
+    public AuthorServiceImpl(
+        AuthorRepository authorRepository
+    ) {
+        this.authorRepository = authorRepository;
+    }
+
+    @Override
+    public List<Author> listAllAuthors() {
+        return authorRepository.readAll();
+    }
+
+    @Override
+    public Author createAuthor(Author author) {
+        return null;
+    }
+
+    @Override
+    public Author findAuthorById(Long authorId) {
+        return null;
+    }
+
+    @Override
+    public Author updateAuthor(Long authorId, Author toUpdate) {
+        return null;
+    }
+
+    @Override
+    public Author deleteAuthor(Long authorId) {
+        return null;
+    }
+}
