@@ -27,6 +27,12 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category createCategory(Category category) {
+        for (Category categoryHelpVar: listAllCategories()){
+            if (category.getName().equals(categoryHelpVar.getName())){
+                return categoryHelpVar;
+            }
+        }
+
         return categoryRepository.create(category);
     }
 

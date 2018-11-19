@@ -11,6 +11,7 @@ import no.itera.bloggingplatform.repository.PostRepository;
 import no.itera.bloggingplatform.repository.memory.AuthorRepositoryImpl;
 import no.itera.bloggingplatform.repository.memory.CategoryRepositoryImpl;
 import no.itera.bloggingplatform.repository.memory.CommentRepositoryImpl;
+import no.itera.bloggingplatform.service.CategoryService;
 import no.itera.bloggingplatform.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class PostServiceImpl implements PostService {
     private PostRepository postRepository;
 
     private CategoryRepository categoryRepository;
+    private CategoryServiceImpl categoryService;
 
     private AuthorRepository authorRepository;
     private CommentRepository commentRepository;
@@ -33,11 +35,13 @@ public class PostServiceImpl implements PostService {
     private List<Comment> comments;
 
     @Autowired
-    public PostServiceImpl(PostRepository postRepository, CategoryRepository categoryRepository, AuthorRepository authorRepository, CommentRepository commentRepository){
+    public PostServiceImpl(PostRepository postRepository, CategoryRepository categoryRepository, AuthorRepository authorRepository, CommentRepository commentRepository, CategoryServiceImpl categoryService){
         this.postRepository = postRepository;
         this.categoryRepository = categoryRepository;
         this.authorRepository = authorRepository;
         this.commentRepository = commentRepository;
+
+        this.categoryService = categoryService;
 
         comments = new ArrayList<>();
         categories = new ArrayList<>();
@@ -57,7 +61,7 @@ public class PostServiceImpl implements PostService {
         if (post.getCategories() != null) {
             for (Category category : post.getCategories()) {
                 if (!categories.contains(category)) {
-                    categoryRepository.create(category);
+                    categoryService.createCategory(category);
                     categories = categoryRepository.readAll();
                 }
             }
@@ -92,7 +96,7 @@ public class PostServiceImpl implements PostService {
     public Post updatePost(Long postId, Post toUpdate) {
         for (Category category: toUpdate.getCategories()){
             if (!categories.contains(category)){
-                categoryRepository.create(category);
+                categoryService.createCategory(category);
                 categories = categoryRepository.readAll();
             }
         }
