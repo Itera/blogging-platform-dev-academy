@@ -33,6 +33,9 @@ public class CommentServiceImpl implements CommentService {
         if (postRepository.read(postId) == null){
             return null;
         }
+        if (comment.getPostId()==null){
+            comment.setPostId(postId);
+        }
         return commentRepository.create(comment);
     }
 
