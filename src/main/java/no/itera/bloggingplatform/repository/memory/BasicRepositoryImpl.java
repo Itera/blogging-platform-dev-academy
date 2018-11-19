@@ -10,7 +10,7 @@ import java.util.Map;
 
 public abstract class BasicRepositoryImpl<T extends Persistable> implements BasicRepository<T> {
 
-    Map<Long, T> inMemoryStorage = new HashMap<>();
+    private Map<Long, T> inMemoryStorage = new HashMap<>();
     private Long id = 1L;
 
     @Override
@@ -32,16 +32,19 @@ public abstract class BasicRepositoryImpl<T extends Persistable> implements Basi
 
     @Override
     public T update(T toUpdate) {
-        return null;
+        inMemoryStorage.put(toUpdate.getKey(), toUpdate);
+        return toUpdate;
     }
 
     @Override
     public T delete(Long id) {
-        return null;
+        T deleted = inMemoryStorage.get(id);
+        inMemoryStorage.remove(id);
+        return deleted;
     }
 
     @Override
     public boolean exists(Long id) {
-        return false;
+        return inMemoryStorage.containsKey(id);
     }
 }
