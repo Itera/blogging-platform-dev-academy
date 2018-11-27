@@ -12,6 +12,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import no.itera.bloggingplatform.controller.dto.AuthorDto;
 import no.itera.bloggingplatform.controller.mapper.AuthorMapper;
 import no.itera.bloggingplatform.service.AuthorService;
@@ -55,13 +57,13 @@ public class AuthorController {
 
   @RequestMapping(method = POST)
   @ResponseStatus(HttpStatus.CREATED)
-  public AuthorDto createAuthor(@RequestBody AuthorDto author) {
+  public AuthorDto createAuthor(@Valid @RequestBody AuthorDto author) {
     return mapToApi(authorService.createAuthor(mapToDomain(author)));
   }
 
   @RequestMapping(method = PUT)
   @ResponseStatus(HttpStatus.OK)
-  public AuthorDto updateAuthor(@RequestBody AuthorDto author) {
+  public AuthorDto updateAuthor(@Valid @RequestBody AuthorDto author) {
     return mapToApi(authorService.updateAuthor(author.getId(), mapToDomain(author)));
   }
 

@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import no.itera.bloggingplatform.controller.dto.PostDto;
 import no.itera.bloggingplatform.service.PostService;
 
@@ -49,7 +51,7 @@ public class PostController {
 
   @RequestMapping(method = POST, consumes = APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.CREATED)
-  public PostDto createPost(@RequestBody PostDto post) {
+  public PostDto createPost(@Valid @RequestBody PostDto post) {
     return mapToApi(
         postService.createNewPost(mapToDomain(post))
     );
@@ -57,7 +59,7 @@ public class PostController {
 
   @RequestMapping(method = PUT)
   @ResponseStatus(HttpStatus.OK)
-  public PostDto updatePost(@RequestBody PostDto post) {
+  public PostDto updatePost(@Valid @RequestBody PostDto post) {
     return mapToApi(
         postService.updatePost(post.getId(), mapToDomain(post))
     );
