@@ -5,6 +5,11 @@ import java.util.Date;
 import org.immutables.value.Value;
 import org.springframework.lang.Nullable;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize(as = ImmutableCommentDto.class)
+@JsonDeserialize(as = ImmutableCommentDto.class)
 @Value.Immutable
 public interface CommentDto {
 
