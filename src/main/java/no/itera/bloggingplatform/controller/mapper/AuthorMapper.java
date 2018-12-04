@@ -4,6 +4,8 @@ import no.itera.bloggingplatform.controller.dto.AuthorDto;
 import no.itera.bloggingplatform.controller.dto.ImmutableAuthorDto;
 import no.itera.bloggingplatform.model.Author;
 
+import javax.validation.Valid;
+
 public final class AuthorMapper {
 
   private AuthorMapper() {
@@ -20,7 +22,7 @@ public final class AuthorMapper {
         .build();
   }
 
-  public static Author mapToDomain(AuthorDto authorDto) {
+  public static Author mapToDomain(@Valid AuthorDto authorDto) {
     Author author = new Author();
     author.setKey(authorDto.getId());
     author.setUserName(authorDto.getUserName());

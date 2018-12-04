@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/authors", produces = APPLICATION_JSON_VALUE)
 public class AuthorController {
@@ -51,7 +53,7 @@ public class AuthorController {
 
   @RequestMapping(method = POST)
   @ResponseStatus(HttpStatus.CREATED)
-  public AuthorDto createAuthor(@RequestBody AuthorDto author) {
+  public AuthorDto createAuthor(@RequestBody @Valid AuthorDto author) {
     return mapToApi(authorService.createAuthor(mapToDomain(author)));
   }
 
