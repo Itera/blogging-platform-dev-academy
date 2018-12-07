@@ -31,7 +31,9 @@ public class DbAuthorRepository extends AbstractDbRepository implements AuthorRe
         if (toPersist.getPassword() != null)
             password = new String(toPersist.getPassword());
 
-        int row = getJdbcTemplate().update("INSERT INTO author (ID, USERNAME, FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        String sql = "INSERT INTO "+tableName+" (ID, USERNAME, FIRSTNAME, LASTNAME, EMAIL, PASSWORD, PHONE) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        int row = getJdbcTemplate().update(sql,
                 nextId,
                 toPersist.getUserName(),
                 toPersist.getFirstName(),
