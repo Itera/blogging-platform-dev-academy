@@ -14,9 +14,21 @@ public abstract class AbstractDbRepository {
     return jdbcTemplate;
   }
 
-  Long getNextId() {
-    return getMaxId() + 1;
+  Long getNextId(String tableName) {
+    String sql = "SELECT max(id)+1 FROM " + tableName;
+    return jdbcTemplate.queryForObject(sql, Long.class);
   }
 
-  abstract Long getMaxId();
+  boolean exists(Long id, String tableName) {
+    String sql = "SELECT COUNT(id) FROM " + tableName + " WHERE id = ?";
+    return jdbcTemplate.queryForObject(sql, Long.class, id) > 0;
+  }
+
+  boolean delete(Long id, String tableName) {
+    String sql = "DELETE FROM " + tableName + " WHERE id = ?";
+    return (jdbcTemplate.update(sql, new Object[] { id })) > 0;
+
+  }
+
+//  abstract Long getMaxId();
 }
