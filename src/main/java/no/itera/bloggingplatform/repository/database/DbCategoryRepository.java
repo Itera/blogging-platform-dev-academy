@@ -68,6 +68,10 @@ public class DbCategoryRepository extends AbstractDbRepository implements Catego
     public Category delete(Long id) {
         Category deleteCateg = read(id);
         delete(id, tableName);
+
+        String sql = "DELETE FROM POST_CATEGORY WHERE category_id = ?";
+        getJdbcTemplate().update(sql, id);
+
         return deleteCateg;
     }
 
